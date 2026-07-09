@@ -12,7 +12,7 @@ import {
 } from "react-icons/hi2";
 import logo from "../../public/images/Jaasify.png";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../firebaseConfig";
+import { getFirebase } from "../firebaseConfig";
 
 export default function AdminLogin() {
     const [email, setEmail] = useState("")
@@ -26,7 +26,7 @@ export default function AdminLogin() {
         e.preventDefault();
         setErrorMessage("")
         validateEmail(email)
-        signInWithEmailAndPassword(auth, email, password)
+        signInWithEmailAndPassword(getFirebase().auth!, email, password)
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;

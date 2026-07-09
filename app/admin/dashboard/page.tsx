@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { getDocs, collection, updateDoc, doc, orderBy, query } from "firebase/firestore";
-import { db } from "../../firebaseConfig";
+import { getFirebase } from "../../firebaseConfig";
 import LeadDetailsModal from '../../components/LeadsDialog';
 import { useRouter } from "next/navigation";
 import Image from "next/image";
@@ -18,7 +18,6 @@ import {
     FaLinkedinIn,
 } from "react-icons/fa";
 import { FiMenu, FiX } from "react-icons/fi";
-import { auth } from "../../firebaseConfig";
 import { motion, AnimatePresence } from "framer-motion";
 import { signOut, onAuthStateChanged } from "firebase/auth";
 
@@ -31,6 +30,8 @@ export default function Admin() {
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
+        const { auth } = getFirebase();
+        if (!auth) return;
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
                 setIsLoading(false);
@@ -42,6 +43,7 @@ export default function Admin() {
     }, [router]);
 
     async function signOutUser() {
+        const { auth } = getFirebase();
         if (auth) {
             await signOut(auth);
             router.push("/")
@@ -49,10 +51,12 @@ export default function Admin() {
     }
 
     async function getLeads() {
+        const { db } = getFirebase();
+        if (!db) return [];
         try {
             const q = query(
                 collection(db, "leads"),
-                orderBy("timestamp", "desc") // 👈 sort by timestamp descending
+                orderBy("timestamp", "desc")
             );
             const querySnapshot = await getDocs(q);
             const leads: any[] = [];
@@ -109,12 +113,14 @@ export default function Admin() {
     const contactedCount = leads.filter((lead) => lead.status === "contacted").length;
 
     const toggleContactedStatus = async (lead: { id: string; name: string; status: string }, event: any) => {
-        event.stopPropagation(); // Prevent row click from opening modal
+        event.stopPropagation();
+
+        const { db } = getFirebase();
+        if (!db) return;
 
         const newStatus = lead.status === "contacted" ? "not_contacted" : "contacted";
 
         try {
-            // Update Firestore
             const leadRef = doc(db, "leads", lead.id);
             await updateDoc(leadRef, {
                 status: newStatus,
