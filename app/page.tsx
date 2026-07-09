@@ -3,48 +3,71 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, CheckCircle } from "lucide-react";
+import {
+  ArrowRight,
+  CheckCircle,
+  User,
+  Briefcase,
+  Users,
+  Target,
+  Brain,
+  Cpu,
+  ChartNoAxesColumn,
+  Zap,
+  CodeXml,
+  Shield,
+  Sparkles,
+  CircleCheck,
+} from "lucide-react";
 
 const services = [
   {
     id: "01",
     title: "CIO as a Service",
-    desc: "On-demand executive technology leadership to guide your strategic initiatives and align technology with business goals.",
+    desc: "On-demand executive technology leadership to guide your strategic initiatives.",
+    icon: User,
   },
   {
     id: "02",
     title: "Customer Experience Digitalisation",
-    desc: "Transform customer interactions with data-driven digital strategies and user-centered design that drives engagement.",
+    desc: "Transform customer interactions with data-driven digital strategies.",
+    icon: Briefcase,
   },
   {
     id: "03",
     title: "Software Engineering as a Service",
-    desc: "Elite engineering talent delivered on-demand to build and scale your technology with production-grade quality.",
+    desc: "Elite engineering talent delivered on-demand to build and scale your technology.",
+    icon: Users,
   },
   {
     id: "04",
     title: "Digital Transformation Advisory",
-    desc: "Comprehensive roadmaps to modernize operations, digitize workflows, and compete effectively in the digital age.",
+    desc: "Comprehensive roadmaps to modernize operations for the digital age.",
+    icon: Target,
   },
   {
     id: "05",
     title: "AI Solutions & Consulting",
-    desc: "Custom artificial intelligence solutions to automate processes, reduce toil, and enhance decision-making at scale.",
+    desc: "Custom artificial intelligence solutions to automate processes and enhance decision-making.",
+    icon: Brain,
   },
   {
     id: "06",
     title: "Machine Learning Services",
-    desc: "Predictive models and data science solutions tailored to your business needs for smarter, faster decisions.",
+    desc: "Predictive models and data science solutions tailored to your business needs.",
+    icon: Cpu,
   },
   {
     id: "07",
     title: "Data Analytics & BI",
-    desc: "Turn your data into actionable insights with advanced analytics, dashboards, and self-serve business intelligence.",
+    desc: "Turn your data into actionable insights with advanced analytics and visualization.",
+    icon: ChartNoAxesColumn,
   },
   {
     id: "08",
     title: "AI-Powered Automation",
-    desc: "Intelligent process automation to reduce costs, eliminate errors, and improve operational efficiency across your organization.",
+    desc: "Intelligent process automation to reduce costs and improve efficiency.",
+    icon: Zap,
   },
 ];
 
@@ -114,6 +137,64 @@ export default function Home() {
           </div>
         </div>
       </section>
+ <section id="services" className="relative py-24 bg-gradient-to-br from-[#1a5f7a] via-[#1c4a5e] to-[#0d2f3f] overflow-hidden">
+        <div className="absolute inset-0 opacity-30">
+          <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#33c0e3]/40 rounded-full blur-3xl" />
+          <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#33c0e3]/30 rounded-full blur-3xl" />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#33c0e3]/10 rounded-full blur-3xl" />
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(51,192,227,0.05)_1px,transparent_1px),linear-gradient(90deg,rgba(51,192,227,0.05)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+          <div className="flex items-start justify-between mb-20">
+            <div>
+              <h2 className="text-5xl md:text-6xl font-light text-white mb-2">
+                Our <span className="font-normal" style={{ color: "#33c0e3" }}>Services</span>
+              </h2>
+              <p className="text-white/60 text-lg mt-4 max-w-2xl">
+                We architect technology solutions that drive measurable business outcomes
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-1">
+            {services.map((s) => {
+              const Icon = s.icon;
+              return (
+                <div key={s.id} className="group cursor-pointer">
+                  <div className="relative border-t border-white/10 py-8 px-6 hover:bg-white/5 transition-colors duration-300">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-6">
+                        <Icon className="w-5 h-5 text-[#33c0e3] opacity-60 group-hover:opacity-100 transition-opacity" />
+                        <div>
+                          <h3 className="text-xl font-light text-white group-hover:text-[#33c0e3] transition-colors duration-300">
+                            {s.title}
+                          </h3>
+                          <p className="text-white/40 text-sm mt-1 max-w-xl">
+                            {s.desc}
+                          </p>
+                        </div>
+                      </div>
+                      <span className="text-white/20 text-sm font-mono group-hover:text-white/40 transition-colors hidden sm:block">
+                        {s.id}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+          <div className="border-t border-white/10 mt-1" />
+          <div className="mt-16 text-center">
+            <p className="text-white/40 text-sm tracking-wider uppercase mb-4">
+              Strategic Digital Services
+            </p>
+            <p className="text-white/70 max-w-2xl mx-auto leading-relaxed">
+              From executive technology leadership to AI-powered automation, we deliver
+              comprehensive solutions that transform businesses and drive measurable results.
+            </p>
+          </div>
+        </div>
+      </section>
 
       {/* ─────── THE JaaSIFY ADVANTAGE ─────── */}
       <section id="advantage" className="py-24 bg-[#1C3462] text-white">
@@ -144,90 +225,196 @@ export default function Home() {
       </section>
 
       {/* ─────── SERVICES ─────── */}
-      <section id="services" className="py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="max-w-2xl mb-16">
-            <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#39BFE1] mb-4">
-              What We Deliver
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#1C3462] leading-tight">
-              Our Services
-            </h2>
-            <p className="mt-4 text-gray-500 leading-relaxed">
-              We architect technology solutions that drive measurable business
-              outcomes across every layer of your organization.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {services.map((s) => (
-              <div
-                key={s.id}
-                className="bg-white border border-gray-200 p-8 hover:border-[#39BFE1] hover:shadow-sm transition-all group"
-              >
-                <span className="text-[#39BFE1] text-sm font-mono">
-                  {s.id}
+     
+      {/* ─────── ABOUT ─────── */}
+      <section id="about" className="relative py-20 lg:py-28 bg-gradient-to-br from-[#1a2332] via-[#1e2a3a] to-[#0f1419] overflow-hidden">
+        <div className="absolute inset-0 opacity-20">
+          <div className="absolute top-20 left-10 w-72 h-72 bg-[#33c0e3] rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-20 right-10 w-96 h-96 bg-purple-500 rounded-full blur-3xl animate-pulse" style={{ animationDelay: "1s" }} />
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#33c0e3]/20 rounded-full blur-3xl" />
+        </div>
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(51,192,227,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(51,192,227,0.03)_1px,transparent_1px)] bg-[size:4rem_4rem]" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left column */}
+            <div className="space-y-8">
+              <div>
+                <span className="text-[#33c0e3] text-sm font-mono tracking-wider">
+                  {'//About us'}
                 </span>
-                <h3 className="text-lg font-bold text-[#1C3462] mt-3 mb-2 group-hover:text-[#39BFE1] transition-colors">
-                  {s.title}
-                </h3>
-                <p className="text-sm text-gray-500 leading-relaxed">
-                  {s.desc}
+                <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white leading-tight">
+                  Africa&rsquo;s Premier{" "}
+                  <span className="text-[#33c0e3]">Tech</span>
+                  <br />
+                  Partner
+                </h2>
+              </div>
+              <p className="text-gray-300 text-lg">
+                At{" "}
+                <span className="text-white font-semibold">JaaSify</span>, we
+                don&rsquo;t just write code, we craft digital experiences that
+                empower businesses across Africa and beyond.
+              </p>
+              <p className="text-gray-400">
+                Founded in Nairobi Kenya, our journey began with a revolutionary
+                belief: Africa is not just a consumer of technology, it is a
+                creator and innovator. We combine cutting-edge global standards
+                with uniquely African ingenuity.
+              </p>
+              <div className="relative p-6 bg-gradient-to-br from-white/5 to-white/10 border border-white/10 rounded-xl backdrop-blur-sm">
+                <p className="text-gray-200 italic">
+                  &ldquo;Every solution we craft is built to endure, adapt, and
+                  grow &mdash; empowering businesses to thrive in an
+                  ever-changing digital landscape.&rdquo;
                 </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ─────── ABOUT ─────── */}
-      <section id="about" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            <div className="relative">
-              <div className="relative rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src="/images/team-meeting.jpg"
-                  alt="JaaSify team collaborating"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto object-cover"
-                />
+              <div className="grid grid-cols-2 gap-4 pt-4">
+                <div className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-lg">
+                  <CodeXml className="w-5 h-5 text-[#33c0e3]" />
+                  <span className="text-white text-sm font-medium">Scalable Solutions</span>
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-lg">
+                  <Target className="w-5 h-5 text-[#33c0e3]" />
+                  <span className="text-white text-sm font-medium">Precision Delivery</span>
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-lg">
+                  <Shield className="w-5 h-5 text-[#33c0e3]" />
+                  <span className="text-white text-sm font-medium">Global Standards</span>
+                </div>
+                <div className="flex items-center gap-3 p-4 bg-white/5 border border-white/10 rounded-lg">
+                  <Sparkles className="w-5 h-5 text-[#33c0e3]" />
+                  <span className="text-white text-sm font-medium">Creative Design</span>
+                </div>
               </div>
             </div>
-            <div>
-              <p className="text-xs font-semibold tracking-[0.2em] uppercase text-[#39BFE1] mb-4">
-                About Us
-              </p>
-              <h2 className="text-3xl sm:text-4xl font-bold text-[#1C3462] leading-tight">
-                Africa&rsquo;s Premier
-                <br />
-                <span className="text-[#39BFE1]">Tech Partner</span>
-              </h2>
-              <div className="mt-6 space-y-4 text-sm text-gray-500 leading-relaxed">
-                <p>
-                  At <strong className="text-[#1C3462]">JaaSify</strong>, we
-                  don&rsquo;t just write code — we craft digital experiences
-                  that empower businesses across Africa and beyond.
-                </p>
-                <p>
-                  Founded in Kenya, our journey began with a
-                  revolutionary belief: Africa is not just a consumer of
-                  technology — it is a creator and innovator. We combine
-                  cutting-edge global standards with uniquely African ingenuity.
-                </p>
-                <p>
-                  Every solution we craft is built to endure, adapt, and grow —
-                  empowering businesses to thrive in an ever-changing digital
-                  landscape.
-                </p>
+
+            {/* Right column: Code editor mockup */}
+            <div className="relative bg-[#0d1117] border border-gray-700/50 rounded-xl shadow-2xl overflow-hidden">
+              {/* Window header */}
+              <div className="flex items-center gap-2 px-4 py-3 bg-[#161b22] border-b border-gray-700/50">
+                <div className="flex gap-1.5">
+                  <div className="w-3 h-3 rounded-full bg-[#ff5f56]" />
+                  <div className="w-3 h-3 rounded-full bg-[#ffbd2e]" />
+                  <div className="w-3 h-3 rounded-full bg-[#27c93f]" />
+                </div>
+                <div className="flex gap-4 ml-4">
+                  <div className="flex items-center gap-2 px-3 py-1 bg-[#0d1117] rounded text-xs text-gray-400 border border-gray-700/50">
+                    <CodeXml className="w-3 h-3" />
+                    JaaSify.tsx
+                  </div>
+                </div>
+                <div className="ml-auto">
+                  <span className="text-[10px] text-gray-500 bg-[#0d1117] px-2 py-1 rounded border border-gray-700/50">
+                    ▶ Run
+                  </span>
+                </div>
               </div>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 text-[#39BFE1] font-medium hover:underline mt-6"
-              >
-                Start a conversation <ArrowRight size={14} />
-              </Link>
+              {/* Code content */}
+              <div className="p-6 font-mono text-sm leading-relaxed overflow-x-auto">
+                <div>
+                  <span className="text-[#c678dd]">const</span>{" "}
+                  <span className="text-[#61afef]">fibonacci</span>{" "}
+                  <span className="text-white">=</span>{" "}
+                  <span className="text-white">(</span>
+                  <span className="text-[#e06c75]">n</span>
+                  <span className="text-white">)</span>{" "}
+                  <span className="text-white">=&gt;</span>{" "}
+                  <span className="text-white">{"{"}</span>
+                </div>
+                <div className="pl-4">
+                  <span className="text-[#c678dd]">if</span>{" "}
+                  <span className="text-white">(</span>
+                  <span className="text-[#e06c75]">n</span>{" "}
+                  <span className="text-white">&lt;=</span>{" "}
+                  <span className="text-[#d19a66]">1</span>
+                  <span className="text-white">)</span>{" "}
+                  <span className="text-[#c678dd]">return</span>{" "}
+                  <span className="text-[#e06c75]">n</span>
+                  <span className="text-white">;</span>
+                </div>
+                <div className="pl-4">
+                  <span className="text-[#c678dd]">return</span>{" "}
+                  <span className="text-[#61afef]">fibonacci</span>
+                  <span className="text-white">(</span>
+                  <span className="text-[#e06c75]">n</span>{" "}
+                  <span className="text-white">-</span>{" "}
+                  <span className="text-[#d19a66]">1</span>
+                  <span className="text-white">)</span>{" "}
+                  <span className="text-white">+</span>{" "}
+                  <span className="text-[#61afef]">fibonacci</span>
+                  <span className="text-white">(</span>
+                  <span className="text-[#e06c75]">n</span>{" "}
+                  <span className="text-white">-</span>{" "}
+                  <span className="text-[#d19a66]">2</span>
+                  <span className="text-white">);</span>
+                </div>
+                <div>
+                  <span className="text-white">{"}"}</span>
+                  <span className="text-white">;</span>
+                </div>
+                <div className="mt-4">
+                  <span className="text-[#c678dd]">export default function</span>{" "}
+                  <span className="text-[#e5c07b]">JaaSify</span>
+                  <span className="text-white">() {"{"}</span>
+                </div>
+                <div className="pl-4">
+                  <span className="text-[#c678dd]">return</span>{" "}
+                  <span className="text-white">(</span>
+                </div>
+                <div className="pl-8">
+                  <span className="text-white">&lt;</span>
+                  <span className="text-[#e06c75]">div</span>
+                  <span className="text-white">&gt;</span>
+                </div>
+                <div className="pl-12">
+                  <span className="text-[#7f848e]">
+                    {"<!-- Crafting Digital Excellence -->"}
+                  </span>
+                </div>
+                <div className="pl-12">
+                  <span className="text-white">&lt;</span>
+                  <span className="text-[#e06c75]">h1</span>
+                  <span className="text-white">&gt;</span>
+                  <span className="text-white">Africa&apos;s Tech Partner</span>
+                  <span className="text-white">&lt;/</span>
+                  <span className="text-[#e06c75]">h1</span>
+                  <span className="text-white">&gt;</span>
+                </div>
+                <div className="pl-8">
+                  <span className="text-white">&lt;/</span>
+                  <span className="text-[#e06c75]">div</span>
+                  <span className="text-white">&gt;</span>
+                </div>
+                <div className="pl-4">
+                  <span className="text-white">);</span>
+                </div>
+                <div>
+                  <span className="text-white">{"}"}</span>
+                </div>
+              </div>
+              {/* Console output */}
+              <div className="border-t border-gray-700/50 bg-[#161b22] p-4">
+                <div className="flex items-center gap-2 mb-2">
+                  <CircleCheck className="w-4 h-4 text-green-400" />
+                  <span className="text-green-400 text-xs font-mono">
+                    Build successful
+                  </span>
+                </div>
+                <div className="space-y-1 text-xs font-mono text-gray-400">
+                  <p>
+                    <span className="text-[#33c0e3]">mission:</span>{" "}
+                    Empower African businesses through technology
+                  </p>
+                  <p>
+                    <span className="text-[#33c0e3]">vision:</span>{" "}
+                    Africa&apos;s premier technology partner
+                  </p>
+                  <p>
+                    <span className="text-[#33c0e3]">values:</span>{" "}
+                    Innovation, Excellence, Integrity
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
