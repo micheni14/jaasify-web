@@ -3,7 +3,7 @@
 import React, { useState } from "react";
 import countryCodes from "../../CountryCodes.json";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import { getFirebase } from "../firebaseConfig";
 
 async function addLeads(
   name: string,
@@ -14,6 +14,8 @@ async function addLeads(
   message: string,
   status: string
 ) {
+  const { db } = getFirebase();
+  if (!db) return false;
   try {
     const docRef = await addDoc(collection(db, "leads"), {
       name,
